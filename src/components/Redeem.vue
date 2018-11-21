@@ -1,8 +1,13 @@
 <template>
   <div class="redeem-container">
     <img src="@/assets/KTR.png" class="logo-ktr">
-    <div class="item-box">
-      <input class="input input-code is-success" type="text" placeholder="1a2b3-c4d5e">
+    <div class="input-box">
+      <input
+        class="input input-code is-success"
+        type="text"
+        placeholder="1a2b3-c4d5e"
+        v-model="inputCode"
+        @keyup.enter="redeem()">
     </div>
     <div class="item-box to-addr-label">
       to address
@@ -11,7 +16,7 @@
       {{ '0xDE3CE563D80a671992622A408327CB7727173328' | shortaddress }}
     </div>
     <div class="btn-box">
-      <div class="button is-rounded redeem-btn">
+      <div class="button is-rounded redeem-btn" @click="redeem()">
         REDEEM
       </div>
     </div>
@@ -20,10 +25,16 @@
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
-import Redeem from '@/components/Redeem.vue';
 
 @Component
-export default class App extends Vue {}
+export default class Redeem extends Vue {
+  private inputCode = '';
+
+  private redeem() {
+    this.$emit('redeem', this.inputCode);
+    this.inputCode = '';
+  }
+}
 </script>
 
 <style scoped>
@@ -42,19 +53,25 @@ export default class App extends Vue {}
   position: absolute;
   left: 50%;
   top: 0;
-  width: 50px;
-  margin-left: -25px;
-  margin-top: -25px;
+  width: 80px;
+  margin-left: -40px;
+  margin-top: -40px;
+}
+.input-box {
+  float: left;
+  width: 100%;
+  margin-top: 25px;
 }
 .item-box {
   float: left;
   width: 100%;
-  margin-top: 10px;
+  margin-top: 15px;
 }
 .btn-box {
   float: left;
   width: 100%;
   margin-top: 20px;
+  text-align: center;
 }
 .input-code {
   text-align: center;
@@ -71,7 +88,7 @@ export default class App extends Vue {}
   background-color: #306D37;
   color: #fff;
   border: 0;
-  width: 50%;
+  width: 70%;
 }
 .redeem-btn:hover {
   color: #fff;

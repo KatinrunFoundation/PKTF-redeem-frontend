@@ -1,7 +1,7 @@
 <template>
   <div class="container is-fluid layout-default--container">
     <div class="column is-6 is-offset-3 layout-default--column">
-      <Redeem/>
+      <Redeem @redeem="redeem"/>
     </div>
   </div>
 </template>
@@ -15,7 +15,11 @@ import Redeem from '@/components/Redeem.vue';
     Redeem,
   },
 })
-export default class App extends Vue {}
+export default class App extends Vue {
+  private redeem(code: string) {
+    console.log(code);
+  }
+}
 </script>
 
 <style>
@@ -31,6 +35,6 @@ body {
 
 <style scoped>
 .layout-default--container {
-  padding: 30px 15px;
+  padding: 40px 15px;
 }
 </style>

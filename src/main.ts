@@ -3,6 +3,8 @@ import App from './App.vue';
 
 import 'bulma/css/bulma.css';
 
+import './filters';
+
 Vue.config.productionTip = false;
 
 new Vue({

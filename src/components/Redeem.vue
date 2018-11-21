@@ -8,7 +8,12 @@
       to address
     </div>
     <div class="item-box addrss-box">
-      {{ '0xDE3CE563D80a671992622A408327CB7727173328' }}
+      {{ '0xDE3CE563D80a671992622A408327CB7727173328' | shortaddress }}
+    </div>
+    <div class="btn-box">
+      <div class="button is-rounded redeem-btn">
+        REDEEM
+      </div>
     </div>
   </div>
 </template>
@@ -46,6 +51,11 @@ export default class App extends Vue {}
   width: 100%;
   margin-top: 10px;
 }
+.btn-box {
+  float: left;
+  width: 100%;
+  margin-top: 20px;
+}
 .input-code {
   text-align: center;
 }
@@ -56,6 +66,15 @@ export default class App extends Vue {}
 }
 .addrss-box {
   text-align: center;
+}
+.redeem-btn {
+  background-color: #306D37;
+  color: #fff;
+  border: 0;
+  width: 50%;
+}
+.redeem-btn:hover {
+  color: #fff;
 }
 </style>
 
